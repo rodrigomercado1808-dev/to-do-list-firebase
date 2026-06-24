@@ -2,7 +2,7 @@
 
 Aplicación de lista de tareas en tiempo real desarrollada con **HTML, CSS y JavaScript puro + Firebase Firestore**, como proyecto de portfolio.
 
-## 🔗 Demo en vivo
+## 🔗 Demo en vivo [https://rodrigomercado1808-dev.github.io/to-do-list-firebase/]
 > Disponible al publicar en GitHub Pages (requiere configurar Firebase primero)
 
 ## ✨ Características
