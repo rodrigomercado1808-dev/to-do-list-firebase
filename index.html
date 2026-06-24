@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow — To-Do App</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">
+        <span class="logo-icon">✓</span>
+        <span class="logo-text">Task<span>Flow</span></span>
+      </div>
+      <div class="header-stats">
+        <span id="statTotal">0 tareas</span>
+        <span class="stat-sep">·</span>
+        <span id="statPending" class="stat-pending">0 pendientes</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main">
+    <div class="container">
+
+      <!-- Input para agregar tarea -->
+      <div class="add-task-wrap">
+        <form class="add-task-form" id="addForm">
+          <div class="input-group">
+            <input
+              type="text"
+              id="taskInput"
+              placeholder="Agregar nueva tarea..."
+              autocomplete="off"
+              maxlength="120"
+            />
+            <select id="prioritySelect">
+              <option value="normal">Normal</option>
+              <option value="alta">Alta</option>
+              <option value="baja">Baja</option>
+            </select>
+            <button type="submit" class="btn-add" aria-label="Agregar tarea">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Agregar
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Filtros -->
+      <div class="filters-wrap">
+        <div class="filters" id="filters">
+          <button class="filter-btn active" data-filter="todas">Todas</button>
+          <button class="filter-btn" data-filter="pendientes">Pendientes</button>
+          <button class="filter-btn" data-filter="completadas">Completadas</button>
+        </div>
+        <button class="btn-clear-done" id="clearDone" title="Eliminar completadas">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+          Limpiar completadas
+        </button>
+      </div>
+
+      <!-- Estado de conexión Firebase -->
+      <div class="firebase-status" id="firebaseStatus">
+        <span class="status-dot" id="statusDot"></span>
+        <span id="statusText">Conectando con Firebase...</span>
+      </div>
+
+      <!-- Lista de tareas -->
+      <div class="tasks-container">
+        <div class="tasks-list" id="tasksList">
+          <!-- Las tareas se renderizan aquí -->
+        </div>
+        <div class="empty-state" id="emptyState" hidden>
+          <div class="empty-icon">📋</div>
+          <p>No hay tareas todavía</p>
+          <span>Agregá tu primera tarea arriba</span>
+        </div>
+        <div class="loading-state" id="loadingState">
+          <div class="spinner"></div>
+          <p>Cargando tareas...</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===== TOAST ===== -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Firebase SDK (módulos ES) -->
+  <script type="module" src="js/firebase.js"></script>
+</body>
+</html>
